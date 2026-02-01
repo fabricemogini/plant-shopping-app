@@ -4,6 +4,17 @@ import CartItem from './CartItem';
 function ProductList({ onHomeClick }) {
     const [showCart, setShowCart] = useState(false);
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
+    
+    const [addedToCart, setAddedToCart] = useState({});
+    
+    const handleAddToCart = (product) => {
+        dispatch(addItem(product)); // Dispatch the action to add the product to the cart (Redux action)
+      
+        setAddedToCart((prevState) => ({ // Update the local state to reflect that the product has been added
+          ...prevState, // Spread the previous state to retain existing entries
+          [product.name]: true, // Set the current product's name as a key with value 'true' to mark it as added
+        }));
+      };
 
     const plantsArray = [
         {
@@ -252,7 +263,9 @@ function ProductList({ onHomeClick }) {
         e.preventDefault();
         setShowCart(false);
     };
+
     return (
+
         <div>
             <div className="navbar" style={styleObj}>
                 <div className="tag">
@@ -280,7 +293,29 @@ function ProductList({ onHomeClick }) {
             ) : (
                 <CartItem onContinueShopping={handleContinueShopping} />
             )}
+        
+        <div className="product-grid">
+            {plantsArray.map((plant, index) => (
+            <div className="product-card" key={index}>
+                <img 
+                className="product-image" 
+                src={plant.image} 
+                alt={plant.name} 
+                />
+                <div className="product-title">{plant.name}</div>
+                <div className="product-description">{plant.description}</div>
+                <div className="product-cost">${plant.cost}</div>
+                <button 
+                className="product-button"
+                onClick={() => handleAddToCart(plant)}
+                >
+                Add to Cart
+                </button>
+            </div>
+            ))}
         </div>
+        </div>
+
     );
 }
 
