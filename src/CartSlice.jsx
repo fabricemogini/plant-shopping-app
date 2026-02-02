@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeItem, updateQuantity } from './CartSlice';
 import './CartItem.css';
 
 const CartItem = ({ onContinueShopping }) => {
@@ -100,6 +99,9 @@ const CartItem = ({ onContinueShopping }) => {
 
 export const { addItem, removeItem, updateQuantity } = CartSlice.actions;
 export default CartSlice.reducer;
+
+
+
 
 
 
