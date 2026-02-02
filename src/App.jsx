@@ -5,7 +5,7 @@ import './App.css';
 import AboutUs from './AboutUs';
 
 function App() {
-  const [showProductList, setShowProductList] = useState(true);
+  const [showProductList, setShowProductList] = useState(false);
 
   const handlePlantsClick = (e) => {
     e.preventDefault();
@@ -22,25 +22,24 @@ function App() {
 
   return (
     <div className="app-container">
-      <div className={`landing-page ${showProductList ? 'fade-out' : ''}`}>
-        <div className="background-image"></div>
-        <div className="content">
-          <div className="landing_content">
-            <h1>Welcome To Paradise Nursery</h1>
-            <div className="divider"></div>
-            <p>Where Green Meets Serenity</p>
-            <button className="get-started-button" onClick={handleGetStartedClick}>
-              Get Started
-            </button>
+      {!showProductList && (
+        <div className="landing-page">
+          <div className="background-image"></div>
+          <div className="content">
+            <div className="landing_content">
+              <h1>Welcome To Paradise Nursery</h1>
+              <div className="divider"></div>
+              <p>Where Green Meets Serenity</p>
+              <button className="get-started-button" onClick={handleGetStartedClick}>
+                Get Started
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Conditionally render ProductList or Cart based on state */}
-      {showProductList ? <ProductList /> : <Cart />}
-
-      {/* You can add AboutUs or other components here */}
-      <AboutUs />
+      {showProductList && <ProductList />}
     </div>
   );
 }
