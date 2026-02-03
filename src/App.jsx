@@ -39,7 +39,7 @@ function App() {
       )}
 
       {/* Conditionally render ProductList or Cart based on state */}
-      {showProductList && <ProductList />}
+      {showProductList && <ProductList onHomeClick={handleHomeClick} />}
     </div>
   );
 }

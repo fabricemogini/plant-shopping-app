@@ -269,7 +269,7 @@ function ProductList({ onHomeClick }) {
 
     return (
 
-        <div>
+        <div className="product-list-wrapper">
             <div className="navbar" style={styleObj}>
                 <div className="tag">
                     <div className="luxury">

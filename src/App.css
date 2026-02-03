@@ -3,7 +3,28 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow: hidden;
+}
+
+html {
+  overflow-y: scroll !important;
+}
+
+body {
+  overflow-y: scroll !important;
+  height: auto !important;
+  min-height: 100vh;
+}
+
+#root {
+  overflow-y: visible !important;
+  height: auto !important;
+  min-height: 100vh;
+}
+
+.app-container {
+  overflow-y: visible !important;
+  height: auto !important;
+  min-height: 100vh;
 }
 
 .landing-page {
@@ -98,7 +119,7 @@
   /* Initially off-screen */
   left: 0;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background-color: rgba(255, 255, 255, 0.9);
   /* Adjust background opacity as needed */
   transition: top 0.5s ease;
